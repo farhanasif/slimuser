@@ -94,7 +94,7 @@
                     </div>
                     <div class="mb-3">
                         <div class="input-group">
-                            <textarea class="form-control" name="address" rows="3"></textarea>
+                            <textarea class="form-control" name="address" rows="3" placeholder="Enter Address"></textarea>
                             <!-- <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-envelope"></span>
@@ -114,7 +114,7 @@
                         </div>
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                            <button type="submit" class="btn btn-primary btn-block">Register</button>
                         </div>
                         <!-- /.col -->
                     </div>
