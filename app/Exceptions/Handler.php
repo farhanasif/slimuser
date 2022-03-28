@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Illuminate\Auth\AuthenticationException;
 
 class Handler extends ExceptionHandler
 {
@@ -52,4 +53,21 @@ class Handler extends ExceptionHandler
     {
         return parent::render($request, $exception);
     }
+
+    // protected function unauthenticated($request, AuthenticationException $exception)
+    // {
+    //    if ($request->expectsJson()){
+    //        return response()->json(['error'=>'Unauthenticate'],422);
+    //    }
+    //    //ata oi je login krete je error hobe tai that means je prodhom login krte jabe aijonno 0
+    //    $guards=array_get($exception->guards(),0);
+    //    $url="";
+    //    if ($guards=='web'){
+    //        $url="/";
+    //    }else{
+    //        $url="/";
+    //    }
+
+    //    return redirect()->guest(url($url));
+    // }
 }

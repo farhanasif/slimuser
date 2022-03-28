@@ -13,6 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+//Auth::routes();
+//Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/','Auth\LoginController@showLoginForm')->name('showLoginForm');
+Route::post('/login','Auth\LoginController@login')->name('login');
+Route::post('/logout','Auth\LoginController@logout')->name('logout');
+
+Route::get('/registration','Auth\RegisterController@showRegistrationForm')->name('registration');
+Route::post('/register','Auth\RegisterController@userRegister')->name('register');
+
+Route::group(['middleware'=>'auth'],function(){
+   Route::get('/dashboard','HomeController@index');
 });
