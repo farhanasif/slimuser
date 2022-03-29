@@ -58,7 +58,8 @@ class RegisterController extends Controller
               'email'=>'required|email|unique:users,email',
               'password'=>'required|min:6',
               'phone'=>'required',
-              'address'=>'required'
+              'address'=>'required',
+              'password_confirmation'=>'required|same:password'
           ]);
           //Save data into the database
           $user=new User();
