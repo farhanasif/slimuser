@@ -16,8 +16,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-//Auth::routes();
-//Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes();
 
 Route::get('/','Auth\LoginController@showLoginForm')->name('showLoginForm');
 Route::post('/login','Auth\LoginController@login')->name('login');
@@ -29,3 +28,7 @@ Route::post('/register','Auth\RegisterController@userRegister')->name('register'
 Route::group(['middleware'=>'auth'],function(){
    Route::get('/dashboard','HomeController@index');
 });
+
+Route::get('/profile','Auth\LoginController@profile')->name('profile');
+Route::post('/update/profile','Auth\LoginController@updateProfile')
+->name('update.profile');

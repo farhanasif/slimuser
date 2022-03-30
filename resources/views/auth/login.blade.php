@@ -61,6 +61,7 @@
           @endif -->
         </div><!-- form-group -->
         <button class="btn btn-primary btn-block btn-signin">Sign In</button>
+        <!-- <a href="#">I forgot my password</a> -->
         <p class="mg-b-0">Don't have an account? <a href="{{route('registration')}}">Sign Up</a></p>
       </div><!-- signin-box -->
      </form>
