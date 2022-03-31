@@ -15,36 +15,52 @@
       <div class="card card-profile">
         <div class="card-body">
           <div class="media">
-            @if(Auth::user()->image)
+            <!-- @if(Auth::user()->image)
                <img src="{{asset('assets/images/'.Auth::user()->image)}}" alt="">
             @else
              <img src="http://via.placeholder.com/500x500" alt="">
-            @endif
+            @endif -->
             <div class="media-body">
-              <h3 class="card-profile-name">{{auth::user()->name}}</h3>
-              <p class="card-profile-position">{{auth::user()->role}}</p>
+              <!-- <h3 class="card-profile-name">{{auth::user()->name}}</h3>
+              <p class="card-profile-position">{{auth::user()->role}}</p> -->
               <!-- <p>San Francisco, California</p> -->
               <div class="row" id="res"></div>
-              <form method="POST" action="{{route('updatePassword')}}" id="changePasswordAdminForm">
-                <div class="row">
-                  <div class="col-lg">
+              <div class="col-md-6 offset-md-3">
+                <form method="POST" action="{{route('updatePassword')}}" id="changePasswordAdminForm">
+                  <div class="form-group">
                     <label>Old Passord:</label>
                     <input class="form-control" placeholder="Enter current password" type="password" name="oldpassword" id="oldpassword">
                     <span class="text-danger error-text oldpassword_error"></span>
-                  </div><!-- col -->
-                  <div class="col-lg mg-t-10 mg-lg-t-0">
+                  </div>
+                  <div class="form-group">
                     <label>New Password:</label>
                     <input class="form-control" placeholder="Enter new password" type="password" name="newpassword" id="newpassword">
                     <span class="text-danger error-text newpassword_error"></span>
-                  </div><!-- col -->
-                  <div class="col-lg mg-t-10 mg-lg-t-0">
+                  </div>
+                  <div class="form-group">
                     <label>Confirm New Password:</label>
                     <input class="form-control" placeholder="ReEnter new password" type="Password" name="cnewpassword" id="cnewpassword">
                     <span class="text-danger error-text cnewpassword_error"></span>
-                  </div><!-- col -->
-                </div><br/>
-                <button id="btn" type="submit" class="btn btn-success float-right">Update Password</button>
-              </form>
+                  </div>
+                  <div class="form-group">
+                    <button id="btn" type="submit" class="btn btn-success float-right">Update Password</button><br/>
+                  </div>
+                </form>
+              </div><br/> 
+              <div class="col-md-6 offset-md-3">
+                <div style="background-color: blue; color: white;" class="card">
+                  <div class="card-header text-center">
+                    Conditions For Valide Password
+                  </div>
+                  <ul style="color:red;" class="list-group list-group-flush">
+                    <li class="list-group-item">❌ Must be minimum 6 and maximum 30 characters</li>
+                    <li class="list-group-item">❌ Must have at least 1 uppercase letter</li>
+                    <li class="list-group-item">❌ Must have at least 1 lowercase letter</li>
+                    <li class="list-group-item">❌ Must have at least 1 numeric character</li>
+                    <li class="list-group-item">❌ Must have at least 1 special character<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@ $ ! % * # ? &</li>
+                  </ul>
+                </div>
+              </div>  
             </div><!-- media-body -->
           </div><!-- media -->
         </div><!-- card-body -->
