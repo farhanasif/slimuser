@@ -21,8 +21,8 @@
              <img src="http://via.placeholder.com/500x500" alt="">
             @endif
             <div class="media-body">
-              <h3 class="card-profile-name">Katherine Lumaad</h3>
-              <p class="card-profile-position">Executive Director at <a href="">ThemePixels, Inc.</a></p>
+              <h3 class="card-profile-name">{{auth::user()->name}}</h3>
+              <p class="card-profile-position">{{auth::user()->role}}</p>
               <!-- <p>San Francisco, California</p> -->
               <div class="row" id="res"></div>
               <form method="POST" action="{{route('update.profile')}}" enctype="multipart/form-data" id="profile_setup_frm">
@@ -59,7 +59,7 @@
                     </div>
                   </div><!-- col -->
                 </div>
-                <button id="btn" type="submit" class="btn btn-primary float-right">Update</button>
+                <button id="btn" type="submit" class="btn btn-success float-right">Update</button>
               </form>
             </div><!-- media-body -->
           </div><!-- media -->
@@ -106,9 +106,11 @@
         if (response.code == 400) {
           let error = '<span class="alert alert-danger">'+response.msg+'</span>';
           $("#res").html(error);
+          location.reload();  
         }else if(response.code == 200){
           let success = '<span class="alert alert-success">'+response.msg+'</span>';
           $("#res").html(success);
+          location.reload();  
         }
       }
     })

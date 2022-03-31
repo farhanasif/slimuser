@@ -41,10 +41,10 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     // override
     protected function redirectTo(){
@@ -151,4 +151,53 @@ class LoginController extends Controller
         $user->save();
         return response()->json(['code' => 200, 'msg' => 'profile updated successfully.']);
     }
+
+
+    public function updatePasswordForm(){
+        return view('profile.password_update');
+    }
+
+
+    function updatePassword(Request $request){
+           //Validate form
+           $validator = \Validator::make($request->all(),[
+               'oldpassword'=>[
+                   'required', function($attribute, $value, $fail){
+                       if( !\Hash::check($value, Auth::user()->password) ){
+                           return $fail(__('The current password is incorrect'));
+                       }
+                   },
+                   'min:6',
+                   'max:30'
+                ],
+                'newpassword'=>'required|string|min:6|max:30|regex:/[a-z]/|regex:/[A-Z]/|regex:/[0-9]/|regex:/[@$!%*#?&]/', 
+                'cnewpassword'=>'required|same:newpassword'
+            ],[
+                'oldpassword.required'=>'Enter your current password',
+                'oldpassword.min'=>'Old password must have atleast 6 characters',
+                'oldpassword.max'=>'Old password must not be greater than 30 characters',
+                'newpassword.required'=>'Enter new password',
+                'newpassword.min'=>'New password must have atleast 6 characters',
+                'newpassword.max'=>'New password must not be greater than 30 characters',
+                'newpassword.regex'=>'New password must contain at least one lowercase letter',
+                'newpassword.regex'=>'New password must contain at least one uppercase letter',
+                'newpassword.regex'=>'New password must contain at least one digit',
+                'newpassword.regex'=>'New password must contain a special character',
+                'cnewpassword.required'=>'ReEnter your new password',
+                'cnewpassword.same'=>'New password and Confirm new password must match'
+            ]);
+
+           if( !$validator->passes() ){
+               return response()->json(['status'=>0,'error'=>$validator->errors()->toArray()]);
+           }else{
+                
+            $update = User::find(Auth::user()->id)->update(['password'=>\Hash::make($request->newpassword)]);
+
+            if(!$update ){
+                return response()->json(['status'=>0,'msg'=>'Something went wrong, Failed to update password in db']);
+            }else{
+                return response()->json(['status'=>1,'msg'=>'Your password has been changed successfully']);
+            }
+           }
+       }
 }

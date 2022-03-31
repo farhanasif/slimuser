@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Auth::routes();
+//Auth::routes();
 
 Route::get('/','Auth\LoginController@showLoginForm')->name('showLoginForm');
 Route::post('/login','Auth\LoginController@login')->name('login');
@@ -25,10 +25,14 @@ Route::post('/logout','Auth\LoginController@logout')->name('logout');
 Route::get('/registration','Auth\RegisterController@showRegistrationForm')->name('registration');
 Route::post('/register','Auth\RegisterController@userRegister')->name('register');
 
-Route::group(['middleware'=>'auth'],function(){
+//Route::group(['middleware'=>'auth'],function(){
    Route::get('/dashboard','HomeController@index');
-});
+// });
 
 Route::get('/profile','Auth\LoginController@profile')->name('profile');
 Route::post('/update/profile','Auth\LoginController@updateProfile')
 ->name('update.profile');
+
+Route::get('/change-password','Auth\LoginController@updatePasswordForm')->name('updatePasswordForm');
+Route::post('/update-password','Auth\LoginController@updatePassword')
+->name('updatePassword');

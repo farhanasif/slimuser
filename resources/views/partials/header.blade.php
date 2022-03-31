@@ -132,7 +132,7 @@
         <div class="dropdown-menu dropdown-menu-right">
           <nav class="nav">
             <a href="{{route('profile')}}" class="nav-link"><i class="icon ion-person"></i> View Profile</a>
-            <a href="page-edit-profile.html" class="nav-link"><i class="icon ion-compose"></i> Password Update</a>
+            <a href="{{route('updatePasswordForm')}}" class="nav-link"><i class="icon ion-compose"></i> Password Update</a>
             <!-- <a href="page-activity.html" class="nav-link"><i class="icon ion-ios-bolt"></i> Activity Log</a>
             <a href="page-settings.html" class="nav-link"><i class="icon ion-ios-gear"></i> Account Settings</a> -->
             <a href="#" onclick="document.getElementById('user-logout').submit()" class="nav-link"><i class="icon ion-forward"></i> Sign Out</a>
