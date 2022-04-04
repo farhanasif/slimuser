@@ -125,7 +125,11 @@
       </div><!-- dropdown -->
       <div class="dropdown dropdown-c">
         <a href="#" class="logged-user" data-toggle="dropdown">
-          <img src="http://via.placeholder.com/500x500" alt="">
+            @if(Auth::user()->image)
+               <img src="{{asset('assets/images/'.Auth::user()->image)}}" alt="">
+            @else
+             <img src="http://via.placeholder.com/500x500" alt="">
+            @endif
           <span>{{Auth::user()->name}}</span>
           <i class="fa fa-angle-down"></i>
         </a>

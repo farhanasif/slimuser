@@ -41,7 +41,7 @@
   <body>
 
     <div class="signin-wrapper">
-     <form action="{{route('register')}}" method="post">
+     <form action="{{route('register')}}" method="post" data-parsley-validate>
       @csrf
       <div class="signin-box signup">
         <h2 class="slim-logo text-center"><a href="javascript:void();">Registration Form<span></span></a></h2>
@@ -86,8 +86,8 @@
           </div>
         </div><!-- row -->
         <div class="mb-3">
-          <div class="input-group">
-            <textarea class="form-control" name="address" rows="3" placeholder="Enter Address"></textarea>
+          <div class="form-group mg-b-0">
+            <textarea class="form-control" name="address" rows="3" placeholder="Enter Address" required></textarea>
           </div>
           @if ($errors->has('address'))
               <span class="text-danger">{{ $errors->first('address') }}</span>
@@ -110,5 +110,6 @@
     <script src="{{asset('assets/lib/bootstrap/js/bootstrap.js')}}"></script>
 
     <script src="{{asset('assets/js/slim.js')}}"></script>
+    <script src="{{asset('assets/lib/parsleyjs/js/parsley.js')}}"></script>
   </body>
 </html>

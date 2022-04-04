@@ -5,8 +5,8 @@
 @section('breadcrumb-title', 'Change Password Information')
 
 @section('custom_css')
-    <!-- <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@8.10.0/dist/sweetalert2.css" rel="stylesheet"> -->
+    <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@8.10.0/dist/sweetalert2.css" rel="stylesheet">
 @endsection
 
 @section('container')
@@ -43,7 +43,7 @@
                     <span class="text-danger error-text cnewpassword_error"></span>
                   </div>
                   <div class="form-group">
-                    <button id="btn" type="submit" class="btn btn-success float-right">Update Password</button><br/>
+                    <button id="btn" type="submit" class="btn btn-primary float-right">Update Password</button><br/>
                   </div>
                 </form>
               </div><br/> 
@@ -71,6 +71,7 @@
 
 @section('custom_script')
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.10.0/dist/sweetalert2.js"></script>
 <script>
   //alert('fdf');
  $.ajaxSetup({
@@ -83,28 +84,45 @@
     
     $('#changePasswordAdminForm').on('submit', function(e){
          e.preventDefault();
-         $.ajax({
-            url:$(this).attr('action'),
-            method:$(this).attr('method'),
-            data:new FormData(this),
-            processData:false,
-            dataType:'json',
-            contentType:false,
-            beforeSend:function(){
-              $(document).find('span.error-text').text('');
-            },
-            success:function(data){
-              if(data.status == 0){
-                $.each(data.error, function(prefix, val){
-                  $('span.'+prefix+'_error').text(val[0]);
-                });
-              }else{
-                $('#changePasswordAdminForm')[0].reset();
-                alert(data.msg);
+         Swal.fire({
+              title: 'Are you sure?',
+              text: "Update This Password",
+              type: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#1b84e7',
+              cancelButtonColor: '#dc3545',
+              confirmButtonText: 'Yes, Update'
+          }).then((result) => {
+            console.log({result});
+              if (result.value) {
+                $.ajax({
+                    url:$(this).attr('action'),
+                    method:$(this).attr('method'),
+                    data:new FormData(this),
+                    processData:false,
+                    dataType:'json',
+                    contentType:false,
+                    beforeSend:function(){
+                      $(document).find('span.error-text').text('');
+                    },
+                    success:function(data){
+                      if(data.status == 0){
+                        $.each(data.error, function(prefix, val){
+                          $('span.'+prefix+'_error').text(val[0]);
+                        });
+                      }else{
+                        $('#changePasswordAdminForm')[0].reset();
+                        Swal.fire(
+                          'Success!',
+                          'You Have Successfully Updated Your Password.',
+                          'success'
+                        )
+                      }
+                    }
+                 });
               }
-            }
-         });
-    });
+          });
+      });
     
   });
 </script>
