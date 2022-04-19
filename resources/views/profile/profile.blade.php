@@ -15,7 +15,11 @@
       <div class="card card-profile">
         <div class="card-body">
           <div class="media">
+            @if(Auth::user()->image)
              <img id="image_preview" src="{{asset('assets/images/'.Auth::user()->image)}}" style="width: 140px;height: 160px">
+            @else
+             <img src="http://via.placeholder.com/500x500" alt="">
+            @endif
             <div class="media-body">
               <h3 class="card-profile-name" id="header_update">{{auth::user()->name}}</h3>
               <p class="card-profile-position">{{auth::user()->role}}</p>

@@ -87,7 +87,7 @@
         </div><!-- row -->
         <div class="mb-3">
           <div class="form-group mg-b-0">
-            <textarea class="form-control" name="address" rows="3" placeholder="Enter Address" required></textarea>
+            <textarea class="form-control" name="address" rows="3" placeholder="Enter Address"></textarea>
           </div>
           @if ($errors->has('address'))
               <span class="text-danger">{{ $errors->first('address') }}</span>
