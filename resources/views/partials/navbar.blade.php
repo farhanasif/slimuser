@@ -2,7 +2,7 @@
   <div class="container">
     <ul class="nav">
       <li class="nav-item with-sub active">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{url('dashboard')}}">
           <i class="icon ion-ios-home-outline"></i>
           <span>Dashboard</span>
         </a>
