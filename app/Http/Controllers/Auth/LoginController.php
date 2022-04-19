@@ -133,7 +133,6 @@ class LoginController extends Controller
         $user->phone = $request->phone;
         $user->address = $request->address;
 
-
         if ($image = $request->file('image')){
         $extension = $request->file('image')->getClientOriginalExtension();
         $imageName = time().".".$extension;
@@ -149,7 +148,7 @@ class LoginController extends Controller
             $user->image = $user->image;
         }
         $user->save();
-        return response()->json(['code' => 200, 'msg' => 'profile updated successfully.']);
+        return response()->json(['code' => 200, 'data'=>$request->name, 'msg' => 'profile updated successfully.']);
     }
 
 
@@ -168,7 +167,7 @@ class LoginController extends Controller
                        }
                    },
                    'min:6',
-                   'max:30'
+                   'max:30',
                 ],
                 'newpassword'=>'required|string|min:6|max:30|regex:/[a-z]/|regex:/[A-Z]/|regex:/[0-9]/|regex:/[@$!%*#?&]/', 
                 'cnewpassword'=>'required|same:newpassword'

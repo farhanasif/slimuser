@@ -26,7 +26,7 @@
               <!-- <p>San Francisco, California</p> -->
               <div class="row" id="res"></div>
               <div class="col-md-6 offset-md-3">
-                <form method="POST" action="{{route('updatePassword')}}" id="changePasswordAdminForm">
+                <form method="POST" action="#" id="changePasswordAdminForm">
                   <div class="form-group">
                     <label>Old Passord:</label>
                     <input class="form-control" placeholder="Enter current password" type="password" name="oldpassword" id="oldpassword">
@@ -95,8 +95,9 @@
           }).then((result) => {
             console.log({result});
               if (result.value) {
+                var url="{{url('/update-password')}}";
                 $.ajax({
-                    url:$(this).attr('action'),
+                    url:url,
                     method:$(this).attr('method'),
                     data:new FormData(this),
                     processData:false,
@@ -112,11 +113,18 @@
                         });
                       }else{
                         $('#changePasswordAdminForm')[0].reset();
-                        Swal.fire(
-                          'Success!',
-                          'You Have Successfully Updated Your Password.',
-                          'success'
-                        )
+                        Swal.fire({
+                            title:'success',
+                            text: 'You Have Successfully Updated Your Password!.',
+                            type:'success',
+                            confirmButtonText: 'OK'
+                        }).then(function(result){
+                            if (result.value) {
+                                window.location.reload();
+                            }
+                        });
+
+
                       }
                     }
                  });
