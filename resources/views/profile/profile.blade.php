@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('dashboardTitle', 'Admin Dashboard')
+@section('dashboardTitle', 'SlimUser')
 @section('dashboard-title', 'Profile')
 @section('breadcrumb-title', 'Profile Information')
 

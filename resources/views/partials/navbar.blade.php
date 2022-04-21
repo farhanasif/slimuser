@@ -6,7 +6,7 @@
           <i class="icon ion-ios-home-outline"></i>
           <span>Dashboard</span>
         </a>
-        <div class="sub-item">
+        <!-- <div class="sub-item">
           <ul>
             <li><a href="index.html">Dashboard 01</a></li>
             <li><a href="index2.html">Dashboard 02</a></li>
@@ -14,12 +14,12 @@
             <li><a href="index4.html">Dashboard 04</a></li>
             <li><a href="index5.html">Dashboard 05</a></li>
           </ul>
-        </div><!-- sub-item -->
+        </div> --><!-- sub-item -->
       </li>
-      <li class="nav-item with-sub mega-dropdown">
-        <a class="nav-link" href="#">
+      <!-- <li class="nav-item with-sub mega-dropdown">
+        <a class="nav-link" href="javascript:void();">
           <i class="icon ion-ios-filing-outline"></i>
-          <span>UI Elements</span>
+          <span>Transactions</span>
         </a>
         <div class="sub-item">
           <div class="row">
@@ -38,7 +38,7 @@
                     <li><a href="elem-images.html">Images</a></li>
                     <li><a href="elem-lists.html">Lists</a></li>
                   </ul>
-                </div><!-- col -->
+                </div>
                 <div class="col-lg">
                   <ul>
                     <li><a href="elem-modal.html">Modal</a></li>
@@ -51,9 +51,9 @@
                     <li><a href="elem-spinner.html">Spinner</a></li>
                     <li><a href="elem-typography.html">Typography</a></li>
                   </ul>
-                </div><!-- col -->
-              </div><!-- row -->
-            </div><!-- col -->
+                </div>
+              </div>
+            </div>
             <div class="col-lg mg-t-30 mg-lg-t-0">
               <label class="section-label">Charts</label>
               <ul>
@@ -66,7 +66,7 @@
                 <li><a href="chart-sparkline.html">Sparkline</a></li>
                 <li><a href="chart-peity.html">Peity</a></li>
               </ul>
-            </div><!-- col -->
+            </div>
             <div class="col-lg mg-t-30 mg-lg-t-0">
               <label class="section-label">Maps</label>
               <ul>
@@ -80,7 +80,7 @@
                 <li><a href="table-basic.html">Basic Table</a></li>
                 <li><a href="table-datatable.html">Data Table</a></li>
               </ul>
-            </div><!-- col -->
+            </div>
             <div class="col-lg mg-t-30 mg-lg-t-0">
               <label class="section-label">Helper / Utilities</label>
               <ul>
@@ -93,17 +93,17 @@
                 <li><a href="util-typography.html">Typography</a></li>
                 <li><a href="util-width.html">Width</a></li>
               </ul>
-            </div><!-- col -->
-          </div><!-- row -->
-        </div><!-- dropdown-menu -->
-      </li>
-      <li class="nav-item with-sub">
-        <a class="nav-link" href="#">
+            </div>
+          </div>
+        </div>
+      </li> -->
+      <li class="nav-item">
+        <a href="{{url('transactions')}}" class="nav-link {{ request()->is('transactions/*') ? 'active' : '' }}">
           <i class="icon ion-ios-book-outline"></i>
-          <span>Pages</span>
+          <span>Transactions</span>
         </a>
         <div class="sub-item">
-          <ul>
+          <!-- <ul>
             <li><a href="page-profile.html">Profile Page</a></li>
             <li><a href="page-invoice.html">Invoice</a></li>
             <li><a href="page-contact.html">Contact Manager</a></li>
@@ -141,7 +141,7 @@
                 <li><a href="page-503.html">503 Service Unavailable</a></li>
               </ul>
             </li>
-          </ul>
+          </ul> -->
         </div><!-- dropdown-menu -->
       </li>
       <li class="nav-item with-sub">
@@ -149,7 +149,7 @@
           <i class="icon ion-ios-gear-outline"></i>
           <span>Forms</span>
         </a>
-        <div class="sub-item">
+        <!-- <div class="sub-item">
           <ul>
             <li><a href="form-elements.html">Form Elements</a></li>
             <li><a href="form-layouts.html">Form Layouts</a></li>
@@ -160,7 +160,7 @@
             <li><a href="form-rangeslider.html">Range Slider</a></li>
             <li><a href="form-datepicker.html">Datepicker</a></li>
           </ul>
-        </div><!-- dropdown-menu -->
+        </div> -->
       </li>
       <li class="nav-item">
         <a class="nav-link" href="page-messages.html">

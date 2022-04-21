@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 //Auth::routes();
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return "Cache is cleared";
+});
 
 Route::get('/','Auth\LoginController@showLoginForm')->name('showLoginForm');
 Route::post('/login','Auth\LoginController@login')->name('login');
@@ -36,3 +40,5 @@ Route::post('/update/profile','Auth\LoginController@updateProfile')
 Route::get('/change-password','Auth\LoginController@updatePasswordForm')->name('updatePasswordForm');
 Route::post('/update-password','Auth\LoginController@updatePassword')
 ->name('updatePassword');
+
+Route::resource('transactions','TransactionController');
