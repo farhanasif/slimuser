@@ -135,7 +135,7 @@ $(document).ready(function(){
     
     $('#saveBtn').click(function (e) {
         e.preventDefault();
-        $(this).html('Sending..');
+        $(this).html('Submit..');
     
         $.ajax({
           data: $('#transactionForm').serialize(),
@@ -160,16 +160,38 @@ $(document).ready(function(){
         //alert('fdf');
         var id = $(this).data("id");
         //alert(id);
-        confirm("Are You sure want to delete !");
-        $.ajax({
-            type: "DELETE",
-            url: "{{ route('transactions.store') }}"+'/'+id,
-            success: function (data) {
-                table.draw();
-            },
-            error: function (data) {
-                console.log('Error:', data);
-            }
+        //confirm("Are You sure want to delete !");
+        Swal.fire({
+              title: 'Are you sure?',
+              text: "Transaction Deleted",
+              type: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#1b84e7',
+              cancelButtonColor: '#dc3545',
+              confirmButtonText: 'Yes, Delete'
+          }).then((result) => {
+            if (result.value) {
+            $.ajax({
+                type: "DELETE",
+                url: "{{ route('transactions.store') }}"+'/'+id,
+                success: function (data) {
+                    table.draw();
+                    Swal.fire({
+                        title:'success',
+                        text: 'You Have Successfully Deleted Your Transaction!.',
+                        type:'success',
+                        confirmButtonText: 'OK'
+                    }).then(function(result){
+                        if (result.value) {
+                            window.location.reload();
+                        }
+                    });
+                },
+                error: function (data) {
+                    console.log('Error:', data);
+                }
+            });
+          }
         });
     });
      
