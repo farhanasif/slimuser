@@ -35,7 +35,7 @@
   <div class="modal fade" id="ajaxModel" aria-hidden="true">
     <div class="modal-dialog">
         <div style="width: 167%!important;" class="modal-content">
-            <div class="modal-header">
+            <div style="background-color: #2a7acb;color: white;" class="modal-header">
                 <h4 style="text-align: center!important;" class="modal-title" id="modelHeading"></h4>
             </div>
             <div class="modal-body">
