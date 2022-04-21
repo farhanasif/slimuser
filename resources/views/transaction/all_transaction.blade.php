@@ -36,7 +36,10 @@
     <div class="modal-dialog">
         <div style="width: 167%!important;" class="modal-content">
             <div style="background-color: #2a7acb;color: white;" class="modal-header">
-                <h4 style="text-align: center!important;" class="modal-title" id="modelHeading"></h4>
+                <h4 style="text-align:justify!important;" class="modal-title" id="modelHeading"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
             </div>
             <div class="modal-body">
                 <form id="transactionForm" name="transactionForm" class="form-horizontal">
